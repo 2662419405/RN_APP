@@ -1,114 +1,85 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React from 'react';
+import React, {PureComponent} from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
+  StatusBar,
   View,
   Text,
-  StatusBar,
+  BackHandler,
+  Platform,
+  ToastAndroid,
 } from 'react-native';
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
+import {createDrawerNavigator} from 'react-navigation-drawer';
+import {Comment, MovieContent, MovieDetail, Search} from './src/pages';
+import Index from './src';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.修改文件内容1
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
+const StackNavigatorConfig = {
+  headerMode: 'none',
+  mode: 'card',
+  defaultNavigationOptions: {
+    gesturesEnabled: false,
+  },
+  transitionConfig: () => ({
+    screenInterpolator: StackViewStyleInterpolator.forHorizontal,
+  }),
 };
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+const DrawerNavigatorConfig = {
+  edgeWidth: 50,
+  drawerType: 'back',
+  drawerWidth : 100,
+};
 
-export default App;
+const Drawer = createDrawerNavigator(
+  {
+    Index: Index,
+  },
+  DrawerNavigatorConfig,
+);
+
+const App = createAppContainer(
+  createStackNavigator(
+    {
+      Drawer: Drawer,
+      Search: Search,
+      MovieContent: MovieContent,
+      MovieDetail: MovieDetail,
+      Comment: Comment,
+    },
+    StackNavigatorConfig,
+  ),
+);
+
+class Home extends PureComponent {
+  componentWillMount() {
+    if (Platform.OS === 'android') {
+      BackHandler.addEventListener('hardwareBackPress', this.onBackAndroid);
+    }
+  }
+  componentWillUnmount() {
+    if (Platform.OS === 'android') {
+      BackHandler.removeEventListener('hardwareBackPress', this.onBackAndroid);
+    }
+  }
+  onBackAndroid = () => {
+    if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
+      //最近2秒内按过back键，可以退出应用。
+      return false;
+    }
+    this.lastBackPressed = Date.now();
+    ToastAndroid &&
+      ToastAndroid.show('(；′⌒`)再按就拜拜了', ToastAndroid.SHORT);
+    return true;
+  };
+
+  render() {
+    return (
+      <>
+        <StatusBar translucent={true} backgroundColor="transparent" />
+        <App />
+      </>
+    );
+  }
+}
+
+export default Home;
