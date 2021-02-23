@@ -14,7 +14,7 @@ export default class extends PureComponent {
             activeOpacity={0.8}
             style={styles.btn}
             onPress={() => navigation.navigate('Search')}>
-            <Icon name="search" size={20} color="#fff" />
+            <Icon name="search" size={20} color="#000" />
           </BorderlessButton>
         </AppTop>
       </View>
