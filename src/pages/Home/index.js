@@ -3,6 +3,6 @@ import {Text} from 'react-native';
 
 export default class extends PureComponent {
   render() {
-    return <Text>MovieContent</Text>;
+    return <Text>Home</Text>;
   }
 }

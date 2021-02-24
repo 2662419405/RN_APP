@@ -1,38 +1,52 @@
 import React, {PureComponent} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import {BorderlessButton} from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {AppTop} from './components';
+import {createAppContainer} from 'react-navigation';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
+import Ionicons from 'react-native-vector-icons/AntDesign';
+import {Home, My, Hot, Interest} from './pages';
+import {RouterConstant} from './constant';
 
-export default class extends PureComponent {
-  render() {
-    const {navigation} = this.props;
-    return (
-      <View style={styles.container}>
-        <AppTop title="电影天堂" navigation={navigation}>
-          <BorderlessButton
-            activeOpacity={0.8}
-            style={styles.btn}
-            onPress={() => navigation.navigate('Search')}>
-            <Icon name="search" size={20} color="#000" />
-          </BorderlessButton>
-        </AppTop>
-      </View>
-    );
-  }
-}
+let {TabRouterList} = RouterConstant;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f7f7f7',
+const TabNavigatorConfig = {
+  defaultNavigationOptions: ({navigation}) => ({
+    tabBarIcon: ({focused, horizontal, tintColor}) => {
+      let {routeName} = navigation.state;
+      let defaultIcon = ''; //默认图标
+      if (routeName === '我的') {
+        defaultIcon = 'user';
+      }
+      if (routeName === '首页') {
+        defaultIcon = 'home';
+      }
+      if (routeName === '热门') {
+        defaultIcon = 'hearto';
+        if (focused) {
+          defaultIcon = 'heart';
+        }
+      }
+      if (routeName === '兴趣') {
+        defaultIcon = 'frowno';
+        if (focused) {
+          defaultIcon = 'smileo';
+        }
+      }
+      return <Ionicons name={defaultIcon} size={25} color={tintColor} />;
+    },
+  }),
+  tabBarOptions: {
+    activeTintColor: 'tomato',
+    inactiveTintColor: 'gray',
   },
-  btn: {
-    width: 48,
-    height: 48,
-    zIndex: 1,
-    backgroundColor: 'rgba(0,0,0,0)',
-    justifyContent: 'center',
-    alignItems: 'center',
+};
+
+const BottomTab = createBottomTabNavigator(
+  {
+    首页: Home,
+    热门: Hot,
+    兴趣: Interest,
+    我的: My,
   },
-});
+  TabNavigatorConfig,
+);
+
+export default createAppContainer(BottomTab);

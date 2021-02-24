@@ -1,56 +1,8 @@
 import React, {PureComponent} from 'react';
-import {
-  StatusBar,
-  View,
-  Text,
-  BackHandler,
-  Platform,
-  ToastAndroid,
-} from 'react-native';
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
-import {createDrawerNavigator} from 'react-navigation-drawer';
-import {Comment, MovieContent, MovieDetail, Search} from './src/pages';
+import {BackHandler, ToastAndroid} from 'react-native';
 import Index from './src';
 
-const StackNavigatorConfig = {
-  headerMode: 'none',
-  mode: 'card',
-  defaultNavigationOptions: {
-    gesturesEnabled: false,
-  },
-  transitionConfig: () => ({
-    screenInterpolator: StackViewStyleInterpolator.forHorizontal,
-  }),
-};
-
-const DrawerNavigatorConfig = {
-  edgeWidth: 50,
-  drawerType: 'back',
-  drawerWidth : 100,
-};
-
-const Drawer = createDrawerNavigator(
-  {
-    Index: Index,
-  },
-  DrawerNavigatorConfig,
-);
-
-const App = createAppContainer(
-  createStackNavigator(
-    {
-      Drawer: Drawer,
-      Search: Search,
-      MovieContent: MovieContent,
-      MovieDetail: MovieDetail,
-      Comment: Comment,
-    },
-    StackNavigatorConfig,
-  ),
-);
-
-class Home extends PureComponent {
+class App extends PureComponent {
   componentWillMount() {
     if (Platform.OS === 'android') {
       BackHandler.addEventListener('hardwareBackPress', this.onBackAndroid);
@@ -75,11 +27,10 @@ class Home extends PureComponent {
   render() {
     return (
       <>
-        <StatusBar translucent={true} backgroundColor="transparent" />
-        <App />
+        <Index />
       </>
     );
   }
 }
 
-export default Home;
+export default App;

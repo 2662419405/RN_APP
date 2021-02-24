@@ -3,6 +3,6 @@ import {Text} from 'react-native';
 
 export default class extends PureComponent {
   render() {
-    return <Text>Search</Text>;
+    return <Text>Search12</Text>;
   }
 }
