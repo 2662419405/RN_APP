@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {BackHandler, ToastAndroid} from 'react-native';
+import {BackHandler, ToastAndroid, StatusBar} from 'react-native';
 import Index from './src';
 
 class App extends PureComponent {
@@ -27,6 +27,7 @@ class App extends PureComponent {
   render() {
     return (
       <>
+        <StatusBar translucent={true} backgroundColor="transparent" />
         <Index />
       </>
     );
