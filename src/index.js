@@ -1,8 +1,9 @@
 import React, {PureComponent} from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
+import {createStackNavigator} from 'react-navigation-stack';
 import Ionicons from 'react-native-vector-icons/AntDesign';
-import {Home, My, Hot, Interest} from './pages';
+import {Home, My, Hot, Interest, Search} from './pages';
 import {RouterConstant} from './constant';
 
 let {TabRouterList} = RouterConstant;
@@ -39,6 +40,10 @@ const TabNavigatorConfig = {
   },
 };
 
+const StackNavigatorConfig = {
+  headerMode: 'none',
+};
+
 const BottomTab = createBottomTabNavigator(
   {
     首页: Home,
@@ -49,4 +54,14 @@ const BottomTab = createBottomTabNavigator(
   TabNavigatorConfig,
 );
 
-export default createAppContainer(BottomTab);
+const AppContainer = createAppContainer(
+  createStackNavigator(
+    {
+      BottomTab: BottomTab,
+      Search: Search,
+    },
+    StackNavigatorConfig,
+  ),
+);
+
+export default AppContainer;
