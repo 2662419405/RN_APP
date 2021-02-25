@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import IconComponent from 'react-native-vector-icons/MaterialIcons';
+import {HomeList} from '../../components';
 import {isLT19} from '../../utils/ScreenUtil';
 
 export default class extends PureComponent {
@@ -52,7 +53,10 @@ export default class extends PureComponent {
           </View>
           <IconComponent size={25} name="sms" color="#fff" />
         </View>
-        <Text>首页</Text>
+        {/* 栏目条 */}
+        <View>
+          <HomeList />
+        </View>
       </View>
     );
   }
@@ -75,7 +79,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#d81e06',
     height: 70,
-    paddingTop: isLT19() ? 0 : 25,
+    paddingTop: isLT19() ? 0 : 30,
     paddingBottom: 5,
   },
   headerContainer: {
