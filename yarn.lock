@@ -5555,6 +5555,11 @@ react-native-screens@^2.17.1:
   resolved "https://registry.npm.taobao.org/react-native-screens/download/react-native-screens-2.17.1.tgz#c3c0ac750af48741c5b1635511e6af2a27b74309"
   integrity sha1-w8CsdQr0h0HFsWNVEeavKie3Qwk=
 
+react-native-splash-screen@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.npm.taobao.org/react-native-splash-screen/download/react-native-splash-screen-3.2.0.tgz#d47ec8557b1ba988ee3ea98d01463081b60fff45"
+  integrity sha1-1H7IVXsbqYjuPqmNAUYwgbYP/0U=
+
 react-native-tab-view@^2.15.2:
   version "2.15.2"
   resolved "https://registry.npm.taobao.org/react-native-tab-view/download/react-native-tab-view-2.15.2.tgz#4bc7832d33a119306614efee667509672a7ee64e"
