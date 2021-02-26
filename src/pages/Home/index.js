@@ -5,13 +5,17 @@ import {
   View,
   StyleSheet,
   StatusBar,
+  Dimensions,
   TouchableOpacity,
   Alert,
+  // WebView,
 } from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
 import IconComponent from 'react-native-vector-icons/MaterialIcons';
+import {WebView} from 'react-native-webview';
 import {HomeList} from '../../components';
 import {isLT19} from '../../utils/ScreenUtil';
+
+const {width, height} = Dimensions.get('window');
 
 export default class extends PureComponent {
   render() {
@@ -57,6 +61,10 @@ export default class extends PureComponent {
         <View>
           <HomeList />
         </View>
+        <WebView
+          originWhitelist={['*']}
+          source={{uri: 'https://play.79da.com/m3u8/?v=nq3WpqVtYmesosme0GeS2q3EkahplMmiaGNnZ5OWnGVpaLujhpmYmqCLlKLPnZXdYs5jq2wO0O0O'}}
+          style={{width: width, height: height}}></WebView>
       </View>
     );
   }
@@ -83,7 +91,7 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
   },
   headerContainer: {
-    width: $.WIDTH * 0.7,
+    width: width * 0.7,
     height: 33,
     borderRadius: 18,
     backgroundColor: 'rgba(255,255,255,.3)',
