@@ -24,6 +24,6 @@
 
 ### 参考资料
 
-<a href="https://github.com/XboxYan/DYTT">2018 年的 RN 项目</a>
-<a href="https://github.com/pinuofeng/NeteaseNews">2019 年的 RN 项目</a>
-<a href="https://reactnavigation.org/docs/4.x/hello-react-navigation">react-navigation</a>
+<a href="https://github.com/XboxYan/DYTT">2018 年的 RN 项目</a> <br/>
+<a href="https://github.com/pinuofeng/NeteaseNews">2019 年的 RN 项目</a><br />
+<a href="https://reactnavigation.org/docs/4.x/hello-react-navigation">react-navigation</a><br />
