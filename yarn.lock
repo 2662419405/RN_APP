@@ -1080,6 +1080,11 @@
   resolved "https://registry.npm.taobao.org/@react-native-community/masked-view/download/@react-native-community/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
   integrity sha1-XdpkPhnlh3k7wgNN2b9zmK1D1AE=
 
+"@react-native-community/viewpager@^4.2.4":
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/@react-native-community/viewpager/-/viewpager-4.2.4.tgz#fd17ba88e0cefc7e6c8ebfff6d4afd2b887f1b2c"
+  integrity sha512-r7iOPPys5MS88VZuqipDadvAAjeW+PE+myhjvboH8rjNHxUUuofJW2uiiRKMSE0/qEyklIpLOCY+S0ZLHHe8Qg==
+
 "@react-navigation/core@^3.7.9":
   version "3.7.9"
   resolved "https://registry.npm.taobao.org/@react-navigation/core/download/@react-navigation/core-3.7.9.tgz#3f7ba0fcb6c8d74a77a057382af198d84c7c4e3b"

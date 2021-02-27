@@ -12,11 +12,48 @@ import {
 } from 'react-native';
 import IconComponent from 'react-native-vector-icons/MaterialIcons';
 import {WebView} from 'react-native-webview';
-import {HomeList} from '../../components';
+import {HomeList, Scrollviewpager} from '../../components';
 import {isLT19} from '../../utils/ScreenUtil';
 
 const {width, height} = Dimensions.get('window');
 
+const tablist = [
+  {
+    type: '1',
+    name: '电影',
+  },
+  {
+    type: '2',
+    name: '电视剧',
+  },
+  {
+    type: '3',
+    name: '综艺',
+  },
+  {
+    type: '4',
+    name: '动漫',
+  },
+];
+
+const tabBarOptions = {
+  style: {
+    paddingHorizontal: 10,
+    height: 40,
+    backgroundColor: '#fff',
+  },
+  labelStyle: {
+    color: '#666',
+  },
+  activeTintColor: '#db4437',
+  indicatorStyle: {
+    width: 20,
+    borderRadius: 4,
+    height: 3,
+    backgroundColor: '#db4437',
+    bottom: 2,
+  },
+};
 export default class extends PureComponent {
   render() {
     const {navigation} = this.props;
@@ -58,13 +95,25 @@ export default class extends PureComponent {
           <IconComponent size={25} name="sms" color="#fff" />
         </View>
         {/* 栏目条 */}
-        <View>
-          <HomeList />
-        </View>
-        <WebView
+        <Scrollviewpager tabBarOptions={tabBarOptions}>
+          <View tablabel="首页">
+            <HomeList />
+          </View>
+          {tablist.map((item, index) => {
+            return (
+              <View key={index} tablabel={item.name}>
+                <Text>{item.name}</Text>
+              </View>
+            );
+          })}
+        </Scrollviewpager>
+        {/* <WebView
           originWhitelist={['*']}
-          source={{uri: 'https://play.79da.com/m3u8/?v=nq3WpqVtYmesosme0GeS2q3EkahplMmiaGNnZ5OWnGVpaLujhpmYmqCLlKLPnZXdYs5jq2wO0O0O'}}
-          style={{width: width, height: height}}></WebView>
+          source={{
+            uri:
+              'https://play.79da.com/m3u8/?v=nq3WpqVtYmesosme0GeS2q3EkahplMmiaGNnZ5OWnGVpaLujhpmYmqCLlKLPnZXdYs5jq2wO0O0O',
+          }}
+          style={{width: width, height: height}}></WebView> */}
       </View>
     );
   }
