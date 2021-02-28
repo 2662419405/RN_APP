@@ -1,11 +1,5 @@
 import React, {PureComponent} from 'react';
-import {
-  StyleSheet,
-  View,
-  Platform,
-  ScrollView,
-  Dimensions,
-} from 'react-native';
+import {StyleSheet, View, Platform, ScrollView, Dimensions} from 'react-native';
 import ViewPagerComponet from '@react-native-community/viewpager';
 
 const {width} = Dimensions.get('window');

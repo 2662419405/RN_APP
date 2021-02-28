@@ -95,8 +95,10 @@ export default class extends PureComponent {
           <IconComponent size={25} name="sms" color="#fff" />
         </View>
         {/* 栏目条 */}
-        <Scrollviewpager tabBarOptions={tabBarOptions}>
-          <View tablabel="首页">
+        <Scrollviewpager
+          style={styles.HomeContainer}
+          tabBarOptions={tabBarOptions}>
+          <View style={[styles.viewContent]} tablabel="首页">
             <HomeList />
           </View>
           {tablist.map((item, index) => {
@@ -124,6 +126,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F8F8F8',
     position: 'relative',
+  },
+  viewContent: {
+    flex: 1,
+    backgroundColor: '#f7f7f7',
   },
   avatarImg: {
     height: 45,
