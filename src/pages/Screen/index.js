@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {Text, View, StyleSheet, Dimensions} from 'react-native';
+import {Text, View, StyleSheet} from 'react-native';
 import {Loading, MovieList} from '../../components';
 import Ajax from '../../utils/ajax';
 
@@ -13,7 +13,7 @@ export default class extends PureComponent {
   }
 
   async componentDidMount() {
-    // this._getHomeList(this.props.url);
+    this._getHomeList(this.props.url);
   }
 
   _getHomeList = (type) => {
@@ -36,7 +36,6 @@ export default class extends PureComponent {
     if (!isRender) {
       return <Loading />;
     }
-
     if (HomeList.length === 0) {
       return (
         <View>
@@ -44,7 +43,6 @@ export default class extends PureComponent {
         </View>
       );
     }
-
     return (
       <View style={[styles.container]}>
         <MovieList HomeList={HomeList} />

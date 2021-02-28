@@ -1,6 +1,6 @@
 import Axios from 'axios';
 
-const DefaultUrl = 'http://app.shtodream.cn';
+const DefaultUrl = 'https://app.shtodream.cn';
 
 /**
  * Ajax返回数据统一处理
