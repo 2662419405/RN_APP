@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import {Text, View, StyleSheet, Dimensions} from 'react-native';
-import {Loading, MovieList} from '../index';
+import {Loading, MovieList} from '../../components';
 import Ajax from '../../utils/ajax';
 
 export default class extends PureComponent {
@@ -13,12 +13,12 @@ export default class extends PureComponent {
   }
 
   async componentDidMount() {
-    this._getHomeList();
+    // this._getHomeList(this.props.url);
   }
 
-  _getHomeList = () => {
+  _getHomeList = (type) => {
     Ajax({
-      url: '/homeList',
+      url: `/innerList?url=/type/${type}.html`,
       success: (res) => {
         this.setState({
           HomeList: res,

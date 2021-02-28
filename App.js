@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {BackHandler, ToastAndroid, StatusBar} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
-import global from './src/utils/globa';
+import './src/utils/globa';
 import Index from './src';
 
 class App extends PureComponent {
@@ -21,7 +21,7 @@ class App extends PureComponent {
       SplashScreen.hide();
     }, 500);
   }
-  
+
   onBackAndroid = () => {
     if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
       //最近2秒内按过back键，可以退出应用。
@@ -35,7 +35,6 @@ class App extends PureComponent {
   render() {
     return (
       <>
-        {/* <StatusBar translucent={true} backgroundColor="transparent" /> */}
         <Index />
       </>
     );

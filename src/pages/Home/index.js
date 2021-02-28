@@ -13,6 +13,7 @@ import {
 import IconComponent from 'react-native-vector-icons/MaterialIcons';
 import {WebView} from 'react-native-webview';
 import {HomeList, Scrollviewpager} from '../../components';
+import {Scrren} from '../index';
 import {isLT19} from '../../utils/ScreenUtil';
 
 const {width, height} = Dimensions.get('window');
@@ -104,7 +105,8 @@ export default class extends PureComponent {
           {tablist.map((item, index) => {
             return (
               <View key={index} tablabel={item.name}>
-                <Text>{item.name}</Text>
+                {/* <Scrren url={item.type} /> */}
+                <Text>123</Text>
               </View>
             );
           })}
