@@ -1,7 +1,8 @@
 import React, {PureComponent} from 'react';
 import {Text, View, StyleSheet, Dimensions} from 'react-native';
 import {Loading, MovieList} from '../index';
-import Ajax from '../../utils/ajax';
+// import Ajax from '../../utils/ajax';
+import fetch from '../../utils/fetch';
 
 export default class extends PureComponent {
   constructor(props) {
@@ -17,16 +18,13 @@ export default class extends PureComponent {
   }
 
   _getHomeList = () => {
-    Ajax({
+    fetch({
       url: '/homeList',
-      success: (res) => {
+      success: (data) => {
         this.setState({
-          HomeList: res,
+          HomeList: data,
           isRender: true,
         });
-      },
-      error: (err) => {
-        console.log(err);
       },
     });
   };
