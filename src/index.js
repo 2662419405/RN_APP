@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {View, StyleSheet, Platform, StatusBar, StatusBar} from 'react-native';
+import {View, StyleSheet, Platform, StatusBar} from 'react-native';
 import {WebView} from 'react-native-webview';
 
 const STATUS_HEIGHT =
